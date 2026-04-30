@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Series Hub</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #000;
+    color: white;
+    overflow-y: auto;
+}
+
+/* PARTICLES */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #e50914, #7a0008);
+    padding: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* CONTAINER */
+.container {
+    width: 92%;
+    margin: auto;
+    padding: 30px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 18px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* BUTTON */
+.download {
+    display: inline-block;
+    margin: 6px;
+    padding: 9px 14px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #e50914, #ff2a2a);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.download:active {
+    transform: scale(0.85);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+    color: #aaa;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<header>
+🎬 SERIES HUB
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h3>Reacher S1</h3>
+        <a class="download" href="https://storage.googleapis.com/photos-web-downloads-anonymous/20260429T153515.550Z/4133399871716478688/13cdb7ae-84bf-4b02-adb8-54cabbd60353/1/fe46b0ef-9f3b-4110-acc1-202483909934">⬇ Download 1080p</a>
+        <a class="download" href="https://hub.maverick.lat/4a553df31d4ba7c6f6c15c13bad0e0d3?token=1777548944135">⬇ Download 720p</a>
+    </div>
+
+    <div class="card">
+        <h3>Reacher S2</h3>
+        <a class="download" href="https://storage.googleapis.com/photos-web-downloads-anonymous/20260429T152623.332Z/4133399871716478688/d3568b08-de65-47f1-b02e-e883413ec590/1/448e5e62-5bda-4f98-95bb-9ad2999cb2c2">⬇ Download 1080p</a>
+        <a class="download" href="https://hub.maverick.lat/ba94900fe482b05716c9aea11610d60d?token=1777543080145">⬇ Download 720p</a>
+    </div>
+
+    <div class="card">
+        <h3>Reacher S3</h3>
+        <a class="download" href="https://storage.googleapis.com/photos-web-downloads-anonymous/20260429T130344.267Z/4133399871716478688/2a420881-0f45-4a8d-9874-a3e27f27c543/1/a62ce5c9-3977-46b1-af8a-ef4a90d7a8c7">⬇ Download 1080p</a>
+        <a class="download" href="https://hub.maverick.lat/d37ef3f4da4b9fe74ef6ff2c145da4c1?token=1777549699">⬇ Download  720p</a>
+    </div>
+   
+<footer>
+⚡ 720p & 1080p Download UI
+</footer>
+
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<60;i++){
+    particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*1.8,
+        dx: (Math.random()-0.5)*0.6,
+        dy: (Math.random()-0.5)*0.6
+    });
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    for(let p of particles){
+        ctx.fillStyle = "rgba(229,9,20,0.5)";
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if(p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if(p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    }
+
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
